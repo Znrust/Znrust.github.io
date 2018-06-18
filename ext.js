@@ -2,16 +2,13 @@
 
     var blockHits = false;
 
-    var server_url = "https://localhost";
-    var server_port = 4715;
+    var server_url = "https://localhost:4715";
     
-    ext._shutdown = function() {
-        if (typeof poller == "number") {
-          clearInterval(poller);
-          poller = null;
-        }
-    };
+    ext._shutdown = function() {};
 
+    ext._getStatus = function() {
+        return {status: 2, msg: 'Ready'};
+    };
 
     ext.postToChat = function(str, callback) {
         if(!ext.checkReady() || ext.checkOverclock(false)) {callback();return};
